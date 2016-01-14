@@ -1,0 +1,9 @@
+#
+# Installs Tomcat, following best practices of separating CATALINA_BASE directory from CATALINA_HOME
+#
+---
+- name: Tomcat | Install Tomcat
+  include: install-tomcat.yml
+
+- name: Tomcat | Prepare Catalina base
+  include: prepare-catalina-base.yml
