@@ -1,5 +1,7 @@
 tomcat-role
 =================
+[![Circle CI](https://circleci.com/gh/daniel-rhoades/tomcat-role.svg?style=svg&circle-token=a5a237c5743c1ed05e5d3f0c3f6710152e9991fc)](https://circleci.com/gh/daniel-rhoades/tomcat-role)
+
 Ansible role for installing Apache Tomcat, following best practices of separating CATALINA_BASE directory from CATALINA_HOME.
 
 Requirements
