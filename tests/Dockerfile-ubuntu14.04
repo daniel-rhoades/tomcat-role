@@ -6,7 +6,7 @@ FROM williamyeh/ansible:ubuntu14.04-onbuild
 
 MAINTAINER Daniel Rhoades <daniel@danielrhoades.com?
 
-ENV PLAYBOOK test.yml
+ENV PLAYBOOK tests/test.yml
 RUN ansible-playbook-wrapper
 
 EXPOSE 8080
