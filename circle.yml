@@ -4,7 +4,7 @@ machine:
 
 dependencies:
   pre:
-    - docker build  -f test/Dockerfile-ubuntu14.04 -t tomcat_trusty:$CIRCLE_SHA1 .
+    - docker build  -f tests/Dockerfile-ubuntu14.04 -t tomcat_trusty:$CIRCLE_SHA1 .
 
 test:
   post:
