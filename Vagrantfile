@@ -1,11 +1,14 @@
-Vagrant.configure(2) do |config|
-    config.vm.define "main", primary: true do |node|
-        node.vm.box = "ubuntu/trusty64"
+VAGRANTFILE_API_VERSION = "2"
 
-        node.vm.provision "ansible" do |ansible|
-            ansible.playbook = "tests/test.yml"
-            ansible.sudo = true
-            ansible.verbose = "vvv"
-        end
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+    config.vm.define "main"
+
+    config.vm.box = "ubuntu/trusty64"
+
+    config.vm.network :forwarded_port, guest: 8080, host: 8080
+
+    config.vm.provision "docker" do |d|
+        d.build_image "/vagrant/", args: "-t tomcat_trusty -f /vagrant/tests/Dockerfile-ubuntu14.04"
+        d.run "tomcat_trusty", args: "-p 8080:8080"
     end
 end

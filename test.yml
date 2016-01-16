@@ -1,7 +1,9 @@
 #
 # Playbook to simply apply the role to "all" hosts, that being in the case this is running as a test - the Vagrant host.
 #
-- hosts: all
+- hosts: localhost
+  connection: local
+  sudo: True
   vars:
       ansible_pkg_mgr: apt
   roles:
