@@ -2,6 +2,8 @@
 # Playbook to simply apply the role to "all" hosts, that being in the case this is running as a test - the Vagrant host.
 #
 - hosts: all
+  roles:
+    - williamyeh.oracle-java
   tasks:
     - include: 'tasks/main.yml'
   vars_files:

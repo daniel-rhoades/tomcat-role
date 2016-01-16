@@ -1,0 +1,20 @@
+#
+# Dockerfile for building a base image that contains Ansible and running the test playbook
+#
+
+FROM williamyeh/ansible:ubuntu14.04-onbuild
+
+MAINTAINER Daniel Rhoades <daniel@danielrhoades.com?
+
+ENV PLAYBOOK test.yml
+RUN ansible-playbook-wrapper
+
+EXPOSE 8080
+
+ENV USER_HOME /opt/cms
+ENV CATALINA_BASE /opt/cms/tomcat
+ENV PATH $CATALINA_BASE/bin:$USER_HOME/bin:$PATH
+WORKDIR $USER_HOME
+
+USER cms
+CMD ["catalina.sh", "run"]
