@@ -2,7 +2,16 @@ tomcat-role
 =================
 [![Circle CI](https://circleci.com/gh/daniel-rhoades/tomcat-role.svg?style=svg&circle-token=a5a237c5743c1ed05e5d3f0c3f6710152e9991fc)](https://circleci.com/gh/daniel-rhoades/tomcat-role)
 
-Ansible role for installing Apache Tomcat, following best practices of separating CATALINA_BASE directory from CATALINA_HOME.
+Ansible role for installing a configurable version of Apache Tomcat, following best practices of separating CATALINA_BASE directory from CATALINA_HOME.
+
+This role will allow you to provide your application WAR and other configuration at start-up.  The target purpose of this role is to be used inside a (Docker) container.
+
+The following options are available to you:
+
+* Any WARs placed in `tomcat_system_home/distributions` be copied to `tomcat_catalina_base`, inside a container these can arrive either by
+ * Mounting `tomcat_system_home/distributions` to suitable directory on the host machine (containing the WARs);
+ * Providing a URL to a single WAR via the `WEBAPP_DISTRO_URL` environment variable; 
+* Any scripts in `tomcat_catalina_base/environment` will be executed before Tomcat starts (via `setenv.sh`).
 
 Requirements
 ------------

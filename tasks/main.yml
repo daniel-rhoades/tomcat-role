@@ -7,3 +7,9 @@
 
 - name: Tomcat | Prepare Catalina base
   include: prepare-catalina-base.yml
+
+- name: Tomcat | Configure Tomcat for customisation on start-up
+  include: configure-tomcat.yml
+
+- name: Tomcat | Copy configuration start-up scripts
+  include: configure-startup.yml

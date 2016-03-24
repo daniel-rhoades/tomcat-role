@@ -1,0 +1,33 @@
+- name: Create a "bin" directory under user home to hold start-up configuration scripts
+  file:
+    path: "{{ tomcat_system_home }}/bin"
+    state: directory
+    owner: "{{ tomcat_system_user }}"
+    group: "{{ tomcat_system_group }}"
+    mode: go-w
+
+- name: Copy "entrypoint" script to be run when the Docker container starts
+  copy:
+    src: entrypoint.sh
+    dest: "{{ tomcat_system_home }}/bin/entrypoint.sh"
+    owner: "{{ tomcat_system_user }}"
+    group: "{{ tomcat_system_group }}"
+    mode: ug+x
+
+- name: Copy "copy-distribution" script, used to deploy WARs outside of the container
+  copy:
+    src: copy-distribution.sh
+    dest: "{{ tomcat_system_home }}/bin/copy-distribution.sh"
+    owner: "{{ tomcat_system_user }}"
+    group: "{{ tomcat_system_group }}"
+    mode: ug+x
+
+- name: Install wget for optionally downloading the distribution from a given URL
+  apt: name=wget state=present
+
+- name: Create a "downloads" directory to hold downloaded distributions
+  file:
+    path: "{{ tomcat_system_home }}/downloads"
+    state: directory
+    owner: "{{ tomcat_system_user }}"
+    group: "{{ tomcat_system_group }}"

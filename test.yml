@@ -1,5 +1,5 @@
 #
-# Playbook to simply apply the role to "all" hosts, that being in the case this is running as a test - the Vagrant host.
+# Playbook to test apply the role to the localhost which is expected to be a Docker container
 #
 - hosts: localhost
   connection: local

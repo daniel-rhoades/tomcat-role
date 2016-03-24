@@ -4,7 +4,7 @@
 
 FROM williamyeh/ansible:ubuntu14.04-onbuild
 
-MAINTAINER Daniel Rhoades <daniel@danielrhoades.com?
+MAINTAINER Daniel Rhoades <daniel@danielrhoades.com>
 
 ENV PLAYBOOK test.yml
 RUN ansible-playbook-wrapper
@@ -17,4 +17,5 @@ ENV PATH $CATALINA_BASE/bin:$USER_HOME/bin:$PATH
 WORKDIR $USER_HOME
 
 USER cms
+ENTRYPOINT ["entrypoint.sh"]
 CMD ["catalina.sh", "run"]

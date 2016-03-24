@@ -1,0 +1,9 @@
+#
+# Configure Tomcat
+#
+
+- name: Copy a custom "setenv.sh", provides the ability to configure Tomcat at start-up from outside the container
+  copy:
+    src: setenv.sh
+    dest: "{{ tomcat_catalina_base }}/bin/setenv.sh"
+    mode: ugo+x
