@@ -11,6 +11,9 @@ CLUSTER_ID="$(whoami)-$(hostname -f)"
 MAX_HEAP=512
 MIN_HEAP=256
 
+JVM_OPTS="-server -Xmx${MAX_HEAP}m -Xms${MIN_HEAP}m"
+DMP_OPTS="-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/opt/cms/heapdumps"
+
 # Run environment scripts in ${USER_HOME}/environment
 for SCRIPT in ${USER_HOME}/environment/*
 do
@@ -20,6 +23,6 @@ do
     fi
 done
 
-CATALINA_OPTS="${JVM_OPTS} ${REP_OPTS} ${DMP_OPTS} ${RMI_OPTS} ${L4J_OPTS} ${JRC_OPTS} ${CONTENTSTORE_OPTS}"
+CATALINA_OPTS="${JVM_OPTS} ${DMP_OPTS}"
 
 export JAVA_HOME CATALINA_HOME CATALINA_BASE
