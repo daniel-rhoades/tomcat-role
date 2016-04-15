@@ -2,11 +2,11 @@
 # Default variables for the Tomcat role
 #
 
-tomcat_download_mirror: http://mirrors.ukfast.co.uk
+tomcat_download_mirror: https://archive.apache.org
 
 tomcat_majorversion: 8
 tomcat_minorversion: 0
-tomcat_patchversion: 32
+tomcat_patchversion: 33
 
 tomcat_download_path: /tmp
 tomcat_remove_archive: true
